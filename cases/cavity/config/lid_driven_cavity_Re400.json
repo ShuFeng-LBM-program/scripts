@@ -1,0 +1,110 @@
+{
+  "Mesh" :
+  {
+    "MeshType" : "Generate",
+    "RealBox" :
+    {
+      "MIN" : ["0.0", "0.0", "0.0"],
+      "MAX" :  ["1.0", "1.0", "1.0"]
+    },
+    "nCell" : ["128", "128", "128"],
+    "BlockCell" : "64",
+    "RegridStep" : "5",
+    "RefinementLayer" : "0",
+
+    "STLModel":
+    [
+
+    ],
+    "MeshRefinement" :
+    [
+
+    ],
+
+    "AdaptiveMeshRefinement":
+    [
+
+    ]
+  },
+
+  "Setup" :
+  {
+    "Field":
+    [
+      {
+        "Model" : "Laminar",
+        "LatticeModel" : "D3Q19",
+        "CollisionModel" : "SRT"
+      }
+    ],
+
+    "Reference":
+    {
+      "DesityRef": "1.0",
+      "TemperatureRef": "1.0",
+      "ViscosityRef": "0.016"
+    },
+
+    "Initialization":
+    {
+      "Desity": "1.0",
+      "Velocity": ["0.0", "0.0", "0.0"],
+      "Force": ["0.0", "0.0", "0.0"]
+    },
+
+    "Output":
+    {
+      "RunStep" : "100000",
+      "ReportStep" : "2000",
+      "OutputStep" : "4000",
+      "OutputDir" : "./cavityRe400_cas_100k"
+    }
+  },
+
+  "BoundaryCondition":
+  [
+    {
+      "Name": "X_MIN",
+      "FlowCondition":
+      {
+        "Type": "Stationary"
+      }
+    },
+    {
+      "Name": "X_MAX",
+      "FlowCondition":
+      {
+        "Type": "Stationary"
+      }
+    },
+    {
+      "Name": "Y_MIN",
+      "FlowCondition":
+      {
+        "Type": "Stationary"
+      }
+    },
+    {
+      "Name": "Y_MAX",
+      "FlowCondition":
+      {
+        "Type": "MovingWall",
+        "Velocity": ["0.05", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name": "Z_MIN",
+      "FlowCondition":
+      {
+        "Type": "Stationary"
+      }
+    },
+    {
+      "Name": "Z_MAX",
+      "FlowCondition":
+      {
+        "Type": "Stationary"
+      }
+    }
+  ]
+}
