@@ -1,0 +1,245 @@
+{
+  "Mesh" :
+  {
+    "MeshType" : "Generate",
+    "RealBox" :
+    {
+      "MIN" : ["-5.0", "-1.5", "-8.0"],
+      "MAX" :  ["10.0", "1.5", "8.0"]
+    },
+    "nCell" : ["600", "120", "640"],
+    "BlockCell" : "40",
+    "RegridStep" : "5",
+    "RefinementLayer" : "0",
+
+    "STLModel":
+    [
+      {
+        "FileName" : "./JsonCollect/02_Cylinder.stl"
+      }
+    ],
+    "MeshRefinement" :
+    [
+
+    ],
+
+    "AdaptiveMeshRefinement":
+    [
+
+    ]
+  },
+
+  "Setup" :
+  {
+    "Field":
+    [
+      {
+        "Model" : "Laminar",
+        "LatticeModel" : "D3Q27",
+        "CollisionModel" : "CUMULANT"
+      }
+    ],
+
+    "Reference":
+    {
+      "DesityRef": "1.0",
+      "TemperatureRef": "1.0",
+      "ViscosityRef": "0.0004"
+    },
+
+    "Initialization":
+    {
+      "Desity": "1.0",
+      "Velocity": ["0.039", "0.0", "0.0"],
+      "Force": ["0.0", "0.0", "0.0"]
+    },
+
+    "Output":
+    {
+      "RunStep" : "80000",
+      "ReportStep" : "1000",
+      "OutputStep" : "1000000",
+      "OutputStartStep" : "0",
+      "OutputDir" : "./cylinderRe3900_cml_rf0_smag017_intpbb"
+    },
+
+    "Probe":
+    [
+      {
+        "OutputName" : "probeX1.06Y-1.0",
+        "ProbesCSV" : "./csv/Re3900/probesX1.06Y-1.0.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX1.06Y-0.5",
+        "ProbesCSV" : "./csv/Re3900/probesX1.06Y-0.5.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX1.06Y0.0",
+        "ProbesCSV" : "./csv/Re3900/probesX1.06Y0.0.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX1.06Y0.5",
+        "ProbesCSV" : "./csv/Re3900/probesX1.06Y0.5.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX1.06Y1.0",
+        "ProbesCSV" : "./csv/Re3900/probesX1.06Y1.0.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX1.54Y-1.0",
+        "ProbesCSV" : "./csv/Re3900/probesX1.54Y-1.0.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX1.54Y-0.5",
+        "ProbesCSV" : "./csv/Re3900/probesX1.54Y-0.5.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX1.54Y0.0",
+        "ProbesCSV" : "./csv/Re3900/probesX1.54Y0.0.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX1.54Y0.5",
+        "ProbesCSV" : "./csv/Re3900/probesX1.54Y0.5.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX1.54Y1.0",
+        "ProbesCSV" : "./csv/Re3900/probesX1.54Y1.0.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX2.02Y-1.0",
+        "ProbesCSV" : "./csv/Re3900/probesX2.02Y-1.0.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX2.02Y-0.5",
+        "ProbesCSV" : "./csv/Re3900/probesX2.02Y-0.5.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX2.02Y0.0",
+        "ProbesCSV" : "./csv/Re3900/probesX2.02Y0.0.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX2.02Y0.5",
+        "ProbesCSV" : "./csv/Re3900/probesX2.02Y0.5.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      },
+      {
+        "OutputName" : "probeX2.02Y1.0",
+        "ProbesCSV" : "./csv/Re3900/probesX2.02Y1.0.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "1000001",
+        "ProbeIntervalStep" : "100",
+        "Variables" : ["density", "ux", "uz"]
+      }
+    ]
+  },
+
+  "BoundaryCondition":
+  [
+    {
+      "Name": "X_MIN",
+      "FlowCondition":
+      {
+        "Type": "InFlow",
+        "Velocity": ["0.039", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name": "X_MAX",
+      "FlowCondition":
+      {
+        "Type": "OutFlow"
+      }
+    },
+    {
+      "Name": "Y_MIN",
+      "FlowCondition":
+      {
+        "Type": "Periodic"
+      }
+    },
+    {
+      "Name": "Y_MAX",
+      "FlowCondition":
+      {
+        "Type": "Periodic"
+      }
+    },
+    {
+      "Name": "Z_MIN",
+      "FlowCondition":
+      {
+        "Type": "Symmetric"
+      }
+    },
+    {
+      "Name": "Z_MAX",
+      "FlowCondition":
+      {
+        "Type": "Symmetric"
+      }
+    },
+    {
+      "Name" : "FromSTL",       
+      "STLid" : "0",
+      "FlowCondition" :
+      {
+        "Type" : "BounceBack"
+      }
+    }
+  ]
+}
