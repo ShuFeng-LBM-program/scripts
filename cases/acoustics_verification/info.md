@@ -10,7 +10,7 @@ commid id: d027e0e1
 
 At $x=x_{min}$ face, apply:
 $$
-\rho(x=x_{min}, t)=\rho_0cos(2\pi f_0 t)
+\rho(x=x_{min}, t) = \rho_{\infty} + \rho_0cos(2\pi f_0 t)
 $$
 with:
 $\rho_0=0.01$, $f_0=0.05$ (20 steps per period)
@@ -36,7 +36,7 @@ $$ k_0 = \frac{\omega_0}{c_s} $$
 
 At the center of the cubic domain ($x=L_x/2$, $y=L_y/2$, $z$), apply:
 $$
-\rho(x, y=L/2, t)=\rho_0cos(2\pi f_0 t)
+\rho(x, y=L/2, t)= \rho_{\infty} + \rho_0cos(2\pi f_0 t)
 $$
 with:
 $\rho_0=0.01$, $f_0=0.05$
