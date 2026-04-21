@@ -1,0 +1,134 @@
+{
+  "Mesh" :
+  {
+    "MeshType" : "Generate",
+    "RealBox" : 
+    {
+      "MIN" :  ["-150.5", "-150.5", "-150.5"],
+      "MAX" :  ["150.5", "150.5", "150.5"]
+    },  
+    "nCell" : ["301", "301", "301"],
+    "BlockCell" : "32",
+    "RegridStep" : "5",
+    "RefinementLayer" : "0",
+    
+    "STLModel" :
+    [
+      {
+        "FileName" : "./JsonCollect/sphere_r20.stl"
+      }
+    ],
+
+    "MeshRefinement":
+    [
+    ],
+
+    "AdaptiveMeshRefinement":
+    [
+    ]
+  },
+
+
+  "Setup":
+  {
+    "Field" :
+    [
+      {
+        "Model" : "Laminar",
+        "LatticeModel" : "D3Q19",
+        "CollisionModel" : "CASCADE"
+      }
+    ],
+
+    "Reference" :
+    {
+      "DesityRef" : "1.0",
+      "TemperatureRef" : "1.0",
+      "ViscosityRef" : "0.0"
+    },
+
+    "Initialization" :
+    {
+      "Desity" : "1.0",
+      "Velocity" : ["0.0", "0.0", "0.0"],
+      "Force" : ["0.0", "0.0", "0.0"]
+    },
+
+    "Output" :
+    {
+      "RunStep" : "401",
+      "ReportStep" : "1",
+      "OutputStep" : "50",
+      "OutputDir" : "./acoustic_validation/pulsatingSphere_srt_tau05"
+    },
+
+    "Probe":
+    [
+      {
+        "OutputName" : "probeX",
+        "ProbesCSV" : "./csv/pulsatingSphere_probesX.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "400000",
+        "ProbeIntervalStep" : "1",
+        "Variables" : ["density"]
+      }
+    ]
+  },
+
+  "BoundaryCondition":
+  [
+    {
+      "Name" : "X_MIN",   
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "X_MAX",   
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "Y_MIN",   
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "Y_MAX",   
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "Z_MIN",            
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }  
+    },
+    {
+      "Name" : "Z_MAX",            
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "FromSTL",
+      "STLid" : "0",
+      "FlowCondition" :
+      {
+        "Type" : "BounceBack",
+        "NormalVelocity" : "0.01",
+        "SphereCenter" : ["0.0", "0.0", "0.0"],
+        "FrequencyStep" : "0.05"
+      }
+    }
+  ]
+}

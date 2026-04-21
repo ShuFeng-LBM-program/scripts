@@ -1,0 +1,126 @@
+{
+  "Mesh" :
+  {
+    "MeshType" : "Generate",
+    "RealBox" : 
+    {
+      "MIN" :  ["-100.5", "-100.5", "-1.5"],
+      "MAX" :  ["100.5", "100.5", "1.5"]
+    },  
+    "nCell" : ["201", "201", "3"],
+    "BlockCell" : "32",
+    "RegridStep" : "5",
+    "RefinementLayer" : "0",
+    
+    "STLModel" :
+    [
+      {
+        "FileName" : "./JsonCollect/plane_box_x-100.stl"
+      }
+    ],
+
+    "MeshRefinement":
+    [
+    ],
+
+    "AdaptiveMeshRefinement":
+    [
+    ]
+  },
+
+
+  "Setup":
+  {
+    "Field" :
+    [
+      {
+        "Model" : "Laminar",
+        "LatticeModel" : "D3Q19",
+        "CollisionModel" : "CASCADE"
+      }
+    ],
+
+    "Reference" :
+    {
+      "DesityRef" : "1.0",
+      "TemperatureRef" : "1.0",
+      "ViscosityRef" : "0.0"
+    },
+
+    "Initialization" :
+    {
+      "Desity" : "1.0",
+      "Velocity" : ["0.0", "0.0", "0.0"],
+      "Force" : ["0.0", "0.0", "0.0"]
+    },
+
+    "Output" :
+    {
+      "RunStep" : "401",
+      "ReportStep" : "1",
+      "OutputStep" : "5000",
+      "OutputDir" : "./acoustic_validation/planewave_xmin_srt_tau05"
+    },
+
+    "Probe":
+    [
+      {
+        "OutputName" : "probeX",
+        "ProbesCSV" : "./csv/planeWaveXmin_probesX.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "400000",
+        "ProbeIntervalStep" : "1",
+        "Variables" : ["density"]
+      }
+    ]
+  },
+
+  "BoundaryCondition":
+  [
+    {
+      "Name" : "X_MAX",   
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "Y_MIN",   
+      "FlowCondition" :
+      {
+        "Type" : "Periodic"
+      }
+    },
+    {
+      "Name" : "Y_MAX",   
+      "FlowCondition" :
+      {
+        "Type" : "Periodic"
+      }
+    },
+    {
+        "Name" : "Z_MIN",            
+        "FlowCondition" :
+        {
+          "Type" : "Periodic"
+        }  
+    },
+    {
+      "Name" : "Z_MAX",            
+      "FlowCondition" :
+      {
+        "Type" : "Periodic"
+      }
+    },
+    {
+      "Name" : "FromSTL",
+      "STLid" : "0",
+      "FlowCondition" :
+      {
+        "Type" : "Oscillate",
+        "FrequencyStep" : "0.05",
+        "DensityAmplitude" : "0.01"
+      }
+    }
+  ]
+}
