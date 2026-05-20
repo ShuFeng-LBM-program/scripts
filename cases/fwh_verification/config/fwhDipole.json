@@ -1,0 +1,123 @@
+{
+  "Mesh" :
+  {
+    "MeshType" : "Generate",
+    "RealBox" : 
+    {
+      "MIN" :  ["-25.5", "-25.5", "-25.5"],
+      "MAX" :  ["25.5", "25.5", "25.5"]
+    },  
+    "nCell" : ["51", "51", "51"],
+    "BlockCell" : "54",
+    "RegridStep" : "5",
+    "RefinementLayer" : "0",
+
+    "STLModel" :
+    [
+    ],
+
+    "MeshRefinement":
+    [
+    ],
+
+    "AdaptiveMeshRefinement":
+    [
+    ]
+  },
+
+
+  "Setup":
+  {
+    "Field" :
+    [
+      {
+        "Model" : "Laminar",
+        "LatticeModel" : "D3Q19",
+        "CollisionModel" : "CASCADE"
+      }
+    ],
+
+    "Reference" :
+    {
+      "DesityRef" : "1.0",
+      "TemperatureRef" : "1.0",
+      "ViscosityRef" : "0.033333333"
+    },
+
+    "Initialization" :
+    {
+      "Desity" : "1.0",
+      "Velocity" : ["0.0", "0.0", "0.0"],
+      "Force" : ["0.0", "0.0", "0.0"]
+    },
+
+    "Output" :
+    {
+      "RunStep" : "5000",
+      "ReportStep" : "500",
+      "OutputStep" : "8000",
+      "OutputDir" : "./fwh_diy_dipole_sphere_d20_f1s_gp3_m03"
+    },
+
+    "FWH":
+    [
+      {
+        "OutputName" : "obs1",
+        "SourceSTL" : "./JsonCollect/ico_sphere_d20_sdv3.stl",
+        "ObserversCSV" : "./csv/arc_points_r300.csv",
+        "SamplingStartStep" : "40",
+        "SamplingFrequency" : "10000",
+        "ReferenceDensity" : "1.0",
+        "SourceFrequency" : "0.0017",
+        "SourceAmplitude" : "1.0",
+        "RefVelocityX" : "0.173205081"
+      }
+    ]
+  },
+
+  "BoundaryCondition":
+  [
+    {
+      "Name" : "X_MIN",
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "X_MAX",   
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "Y_MIN",
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "Y_MAX",
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    },
+    {
+      "Name" : "Z_MIN",
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }  
+    },
+    {
+      "Name" : "Z_MAX",
+      "FlowCondition" :
+      {
+        "Type" : "OutFlow"
+      }
+    }
+  ]
+}
