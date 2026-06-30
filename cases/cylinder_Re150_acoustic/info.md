@@ -6,7 +6,7 @@ commit id: 1a0f63b7
 Refer to config json files.
 
 ## Post-Processing 
-* For measuring drag and lift coeffecients:
+* For measuring drag and lift coefficients:
     * [plot_coefficients](scripts/plot_coefficients.ipynb)
 * For measuring pressure coefficients:
     * [plot_cp](scripts/plot_cp.ipynb)
