@@ -1,6 +1,6 @@
 ## Version
-branch: lmj-highRe-fwh-sponge
-commit id: 1a0f63b7
+branch: lmj-highRe
+commit id: 6e7de8bf
 
 ## Case Description
 Refer to config json files.
