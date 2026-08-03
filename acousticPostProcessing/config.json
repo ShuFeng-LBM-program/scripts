@@ -1,0 +1,17 @@
+
+{
+    "minimumFrequency" : 20.0,
+    "maximumFrequency" : 20000.0,
+    "filePath" : [
+        "/Users/maggie/repo/scripts/acousticPostProcessing/microphones/microphone0001.txt",
+        "/Users/maggie/repo/scripts/acousticPostProcessing/microphones/microphone0002.txt",
+        "/Users/maggie/repo/scripts/acousticPostProcessing/microphones/microphone0003.txt"
+    ],
+    "windowFunctionType" : 2,
+    "band" : "narrowBand",
+    "weighting" : "none",
+    "startTime" : 2.0,
+    "endTime" : 4.0,
+    "writePath" : "/Users/maggie/repo/scripts/acousticPostProcessing/out1",
+    "smoothFactor" : 1
+}
