@@ -1,0 +1,142 @@
+{
+  "Mesh" : 
+  {
+    "MeshType" : "Generate",
+    "RealBox" : 
+    {
+      "MIN" : ["-0.3", "-0.3", "-0.003125"],
+      "MAX" :  ["0.3", "0.3", "0.003125"]
+    },
+    "nCell" : ["96", "96", "1"],
+    "BlockCell" : "96",
+    "RegridStep" : "5",
+    "RefinementLayer" : "0",
+    "STLModel": 
+    [
+      {
+        "FileName" : "/home/liangmj/repo/LBM-Program/amrlbm/bin/a_taylor_couette/cylinder_r026.stl",
+        "IfIn" : "0"
+      },
+      {
+        "FileName" : "/home/liangmj/repo/LBM-Program/amrlbm/bin/a_taylor_couette/cylinder_r01.stl",
+        "IfIn" : "1"
+      }
+    ],
+    "MeshRefinement" :
+    [
+    ],
+
+    "AdaptiveMeshRefinement":
+    [
+    ]
+  },
+
+  "Setup" : 
+  {
+    "Field": 
+    [
+      {
+        "Model" : "Laminar",
+        "LatticeModel" : "D2Q9",
+        "CollisionModel" : "SRT"
+      }
+    ],
+
+    "Reference": 
+    {
+      "DesityRef": "1.0",
+      "TemperatureRef": "1.0",
+      "ViscosityRef": "0.045"
+    },
+
+    "Initialization": 
+    {
+      "Desity": "1.0",
+      "Velocity": ["0.0", "0.0", "0.0"],
+      "Force": ["0.0", "0.0", "0.0"]
+    },
+
+    "Output" : 
+    {
+      "RunStep" : "100000",
+      "ReportStep" : "1000",
+      "OutputStep" : "100000",
+      "OutputStartStep" : "0",
+      "OutputEndStep" : "10000000",
+      "OutputDir" : "/home/liangmj/repo/LBM-Program/amrlbm/bin/a_taylor_couette/32dx_noGeoUpdate"
+    },
+
+    "Probe":
+    [
+      {
+        "OutputName" : "probe",
+        "ProbesCSV" : "/home/liangmj/repo/LBM-Program/amrlbm/bin/a_taylor_couette/taylor_couette_probes.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "10000000",
+        "ProbeIntervalStep" : "64",
+        "Variables" : ["density", "ux", "uy"]
+      }
+    ],
+
+    "ForceTorqueEvaluator":
+    [
+      {
+        "OutputName" : "forceCylinder",
+        "GeoID" : ["1"],
+        "EvaluateStartStep" : "0",
+        "EvaluateIntervalStep" : "64"
+      }
+    ]
+
+  },
+
+  "BoundaryCondition": 
+  [
+    {
+      "Name": "X_MIN",
+      "FlowCondition": { "Type": "Stationary" }
+    },
+    {
+      "Name": "X_MAX",
+      "FlowCondition": { "Type": "Stationary" }
+    },
+    {
+      "Name": "Y_MIN",
+      "FlowCondition":  { "Type": "Stationary" }
+    },
+    {
+      "Name": "Y_MAX",
+      "FlowCondition": { "Type": "Stationary" }
+    },
+    {
+      "Name": "Z_MIN",
+      "FlowCondition": { "Type": "Periodic" }
+    },
+    {
+      "Name": "Z_MAX",
+      "FlowCondition": { "Type": "Periodic" }
+    },
+    {
+      "Name" : "FromSTL",       
+      "STLid" : "0",
+      "FlowCondition" :
+      {
+        "Type" : "Stationary"
+      }
+    },
+    {
+      "Name" : "FromSTL",       
+      "STLid" : "1",
+      "FlowCondition" :
+      {
+        "Type" : "MovLinear",
+        "RotationAxisOrigin" : ["0.0, 0.0, 0.0"],
+        "RotationAxisDirection" : ["0.0", "0.0", "1.0"],
+        "AngularVelocityPhy" : "24.53640495",
+        "TranslateVelLB" : ["0.0", "0.0", "0.0"],
+        "refDensityPhy" : "1.0",
+        "refVelocityPhy" : ["0.0", "0.0", "0.0"]
+      }
+    }
+  ]
+}
