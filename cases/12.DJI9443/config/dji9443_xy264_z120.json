@@ -1,0 +1,175 @@
+{
+  "Mesh" : 
+  {
+    "MeshType" : "Generate",
+    "RealBox" : 
+    {
+      "MIN" : ["-0.132", "-0.132", "-0.09"],
+      "MAX" :  ["0.132", "0.132", "0.03"]
+    },
+    "nCell" : ["440", "440", "200"],
+    "BlockCell" : "440",
+    "RegridStep" : "5",
+    "RefinementLayer" : "0",
+    "STLModel": 
+    [
+      { "FileName" : "/home/liangmj/repo/LBM-Program/amrlbm/bin/a_dji9443/DJI_9443_CW_z_m.stl" }
+    ],
+    "MeshRefinement" :
+    [
+    ],
+
+    "AdaptiveMeshRefinement":
+    [
+    ]
+  },
+
+  "Setup" : 
+  {
+    "Field": 
+    [
+      {
+        "Model" : "Laminar",
+        "LatticeModel" : "D3Q27",
+        "CollisionModel" : "CUMULANT"
+      }
+    ],
+
+    "Reference": 
+    {
+      "DesityRef": "1.0",
+      "TemperatureRef": "1.0",
+      "ViscosityRef": "4.27352E-05"
+    },
+
+    "Initialization": 
+    {
+      "Desity": "1.0",
+      "Velocity": ["0.0", "0.0", "0.0"],
+      "Force": ["0.0", "0.0", "0.0"]
+    },
+
+    "Output": 
+    {
+      "RunStep" : "1000000",
+      "ReportStep" : "10",
+      "OutputStep" : "1000",
+      "OutputStartStep" : "0",
+      "OutputDir" : "/home/liangmj/repo/LBM-Program/amrlbm/bin/a_dji9443/xy264_z120_cml_smag017"
+    },
+
+    "FWH":
+    [
+      {
+        "OutputName" : "mic16R",
+        "SourceSTL" : "/home/liangmj/repo/LBM-Program/amrlbm/bin/a_dji9443/DJI_fwh_m.stl",
+        "ObserversCSV" : "/home/liangmj/repo/LBM-Program/amrlbm/bin/a_dji9443/DJI_microphones_m.csv",
+        "SamplingStartStep" : "0",
+        "SamplingFrequency" : "30000",
+        "ReferenceDensity" : "1.204",
+        "RefVelocityX" : "0.0"
+      }
+    ],
+
+    "ForceTorqueEvaluator":
+    [
+      {
+        "OutputName" : "force0",
+        "GeoID" : ["0"],
+        "EvaluateStartStep" : "0",
+        "EvaluateIntervalStep" : "8"
+      }
+    ]
+
+  },
+
+  "BoundaryCondition": 
+  [
+    {
+      "Name": "X_MIN",
+      "FlowCondition": 
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "10",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name": "X_MAX",
+      "FlowCondition": 
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "10",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name": "Y_MIN",
+      "FlowCondition": 
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "10",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name": "Y_MAX",
+      "FlowCondition": 
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "10",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name": "Z_MIN",
+      "FlowCondition": 
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "10",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name": "Z_MAX",
+      "FlowCondition": 
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "10",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name" : "FromSTL",       
+      "STLid" : "0",
+      "FlowCondition" :
+      {
+        "Type" : "MovLinear",
+        "RotationAxisOrigin" : ["0.0", "0.0", "0.0"],
+        "RotationAxisDirection" : ["0.0", "0.0", "-1.0"],
+        "AngularVelocityPhy" : "502.655",
+        "TranslateVelLB" : ["0.0", "0.0", "0.0"],
+        "refDensityPhy" : "1.204",
+        "refVelocityPhy" : ["0.0", "0.0", "0.0"]
+      }
+    }
+  ]
+}
