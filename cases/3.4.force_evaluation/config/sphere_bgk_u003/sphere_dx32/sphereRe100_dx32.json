@@ -1,0 +1,171 @@
+{
+  "Mesh": {
+    "MeshType": "Generate",
+    "RealBox": {
+      "MIN": [
+        "-5.0",
+        "-2.5",
+        "-2.5"
+      ],
+      "MAX": [
+        "7.0",
+        "2.5",
+        "2.5"
+      ]
+    },
+    "nCell": [
+      "384",
+      "160",
+      "160"
+    ],
+    "BlockCell": "384",
+    "RegridStep": "5",
+    "RefinementLayer": "0",
+    "STLModel": [
+      {
+        "FileName": "./ico_sphere_d1_sdv4.stl"
+      }
+    ],
+    "MeshRefinement": [],
+    "AdaptiveMeshRefinement": []
+  },
+  "Setup": {
+    "Field": [
+      {
+        "Model": "Laminar",
+        "LatticeModel": "D3Q19",
+        "CollisionModel": "BGK"
+      }
+    ],
+    "Reference": {
+      "DesityRef": "1.0",
+      "TemperatureRef": "1.0",
+      "ViscosityRef": "0.0096"
+    },
+    "Initialization": {
+      "Desity": "1.0",
+      "Velocity": [
+        "0.03",
+        "0.0",
+        "0.0"
+      ],
+      "Force": [
+        "0.0",
+        "0.0",
+        "0.0"
+      ]
+    },
+    "Output": {
+      "RunStep": "100000",
+      "ReportStep": "100",
+      "OutputStep": "50000",
+      "OutputStartStep": "0",
+      "OutputDir": "./sphere_bgk_u003/sphere_dx32/sph_dx32_Re100"
+    },
+    "ForceTorqueEvaluator": [
+      {
+        "OutputName": "forceSphere",
+        "GeoID": [
+          "0"
+        ],
+        "EvaluateStartStep": "0",
+        "EvaluateIntervalStep": "8"
+      }
+    ]
+  },
+  "BoundaryCondition": [
+    {
+      "Name": "X_MIN",
+      "FlowCondition": {
+        "Type": "InFlow",
+        "Velocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "X_MAX",
+      "FlowCondition": {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "Y_MIN",
+      "FlowCondition": {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "Y_MAX",
+      "FlowCondition": {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "Z_MIN",
+      "FlowCondition": {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "Z_MAX",
+      "FlowCondition": {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "FromSTL",
+      "STLid": "0",
+      "FlowCondition": {
+        "Type": "BounceBack"
+      }
+    }
+  ]
+}
