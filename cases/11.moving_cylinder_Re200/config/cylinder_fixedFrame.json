@@ -1,0 +1,127 @@
+{
+  "Mesh": {
+    "MeshType": "Generate",
+    "RealBox": {
+      "MIN": [
+        "-60.3",
+        "-54.0",
+        "-0.5"
+      ],
+      "MAX": [
+        "940.7",
+        "47.0",
+        "0.5"
+      ]
+    },
+    "nCell": [
+      "1001",
+      "101",
+      "1"
+    ],
+    "BlockCell": "1001",
+    "RegridStep": "5",
+    "RefinementLayer": "0",
+    "STLModel": [
+      {
+        "FileName": "/Users/maggie/repo/LBM-Program/amrlbm/bin/a_moving_cylinder_channel/cylinder_nGon_D24.stl"
+      }
+    ],
+    "MeshRefinement": [],
+    "AdaptiveMeshRefinement": []
+  },
+  "Setup": {
+    "Field": [
+      {
+        "Model": "Laminar",
+        "LatticeModel": "D2Q9",
+        "CollisionModel": "BGK"
+      }
+    ],
+    "Reference": {
+      "DesityRef": "1.0",
+      "TemperatureRef": "1.0",
+      "ViscosityRef": "0.0048"
+    },
+    "Initialization": {
+      "Desity": "1.0",
+      "Velocity": [
+        "0.0",
+        "0.0",
+        "0.0"
+      ],
+      "Force": [
+        "0.0",
+        "0.0",
+        "0.0"
+      ]
+    },
+    "Output": {
+      "RunStep": "20000",
+      "ReportStep": "10",
+      "OutputStep": "1000",
+      "OutputStartStep": "0",
+      "OutputDir": "/Users/maggie/repo/LBM-Program/amrlbm/bin/a_moving_cylinder_channel/fixed_frame_2d_bgk_eq"
+    },
+    "ForceTorqueEvaluator": [
+      {
+        "OutputName": "forceCylinder",
+        "GeoID": [
+          "0"
+        ],
+        "EvaluateStartStep": "0",
+        "EvaluateIntervalStep": "1"
+      }
+    ]
+  },
+  "BoundaryCondition": [
+    {
+      "Name": "X_MIN",
+      "FlowCondition": {
+        "Type": "Periodic"
+      }
+    },
+    {
+      "Name": "X_MAX",
+      "FlowCondition": {
+        "Type": "Periodic"
+      }
+    },
+    {
+      "Name": "Y_MIN",
+      "FlowCondition": {
+        "Type": "Stationary"
+      }
+    },
+    {
+      "Name": "Y_MAX",
+      "FlowCondition": {
+        "Type": "Stationary"
+      }
+    },
+    {
+      "Name": "Z_MIN",
+      "FlowCondition": {
+        "Type": "Periodic"
+      }
+    },
+    {
+      "Name": "Z_MAX",
+      "FlowCondition": {
+        "Type": "Periodic"
+      }
+    },
+    {
+      "Name": "FromSTL",
+      "STLid": "0",
+      "FlowCondition": {
+        "Type" : "MovLinear",
+        "RotationAxisOrigin" : ["0.0, 0.0, 0.0"],
+        "RotationAxisDirection" : ["0.0", "0.0", "1.0"],
+        "AngularVelocityPhy" : "0.0",
+        "TranslateVelLB" : ["0.04", "0.0", "0.0"],
+        "refDensityPhy" : "1.204",
+        "refVelocityPhy" : ["0.0", "0.0", "0.0"]
+      }
+    }
+  ]
+}
