@@ -4,11 +4,11 @@
     "MeshType" : "Generate",
     "RealBox" :
     {
-      "MIN" : ["0.0", "0.0", "0.0"],
-      "MAX" :  ["1.0", "1.0", "1.0"]
+      "MIN" : ["0.0", "0.0", "-0.00390625"],
+      "MAX" : ["1.0", "1.0", "0.00390625"]
     },
-    "nCell" : ["128", "128", "128"],
-    "BlockCell" : "64",
+    "nCell" : ["128", "128", "1"],
+    "BlockCell" : "128",
     "RegridStep" : "5",
     "RefinementLayer" : "0",
 
@@ -33,7 +33,7 @@
     [
       {
         "Model" : "Laminar",
-        "LatticeModel" : "D3Q19",
+        "LatticeModel" : "D2Q9",
         "CollisionModel" : "SRT"
       }
     ],
@@ -42,7 +42,7 @@
     {
       "DesityRef": "1.0",
       "TemperatureRef": "1.0",
-      "ViscosityRef": "0.016"
+      "ViscosityRef": "0.00384"
     },
 
     "Initialization":
@@ -55,10 +55,30 @@
     "Output":
     {
       "RunStep" : "100000",
-      "ReportStep" : "2000",
-      "OutputStep" : "4000",
-      "OutputDir" : "./cavityRe400_cas_100k"
-    }
+      "ReportStep" : "1000",
+      "OutputStep" : "500000",
+      "OutputDir" : "/Users/maggie/repo/LBM-Program/amrlbm/bin/a_cavity/Re1000_q9_srt"
+    },
+
+    "Probe":
+    [
+      {
+        "OutputName" : "probe_Y_U",
+        "ProbesCSV" : "/Users/maggie/repo/LBM-Program/amrlbm/bin/a_cavity/csv/cavity2d_yProbes.csv",
+        "ProbeStartStep" : "40000",
+        "ProbeEndStep" : "500001",
+        "ProbeIntervalStep" : "1000",
+        "Variables" : ["density", "ux"]
+      },
+      {
+        "OutputName" : "probe_X_V",
+        "ProbesCSV" : "/Users/maggie/repo/LBM-Program/amrlbm/bin/a_cavity/csv/cavity2d_xProbes.csv",
+        "ProbeStartStep" : "40000",
+        "ProbeEndStep" : "500001",
+        "ProbeIntervalStep" : "1000",
+        "Variables" : ["density", "uy"]
+      }
+    ]
   },
 
   "BoundaryCondition":
@@ -89,21 +109,21 @@
       "FlowCondition":
       {
         "Type": "MovingWall",
-        "Velocity": ["0.05", "0.0", "0.0"]
+        "Velocity": ["0.03", "0.0", "0.0"]
       }
     },
     {
       "Name": "Z_MIN",
       "FlowCondition":
       {
-        "Type": "Stationary"
+        "Type": "Periodic"
       }
     },
     {
       "Name": "Z_MAX",
       "FlowCondition":
       {
-        "Type": "Stationary"
+        "Type": "Periodic"
       }
     }
   ]
