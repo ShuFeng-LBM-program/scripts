@@ -1,0 +1,154 @@
+{
+  "Mesh" :
+  {
+    "MeshType" : "Generate",
+    "RealBox" : 
+    {
+      "MIN" :  ["-100.5", "-100.5", "-100.5"],
+      "MAX" :  ["100.5", "100.5", "100.5"]
+    },  
+    "nCell" : ["201", "201", "201"],
+    "BlockCell" : "201",
+    "RegridStep" : "5",
+    "RefinementLayer" : "0",
+
+    "STLModel" :
+    [
+    ],
+
+    "MeshRefinement":
+    [
+    ],
+
+    "AdaptiveMeshRefinement":
+    [
+    ]
+  },
+
+
+  "Setup":
+  {
+    "Field" :
+    [
+      {
+        "Model" : "Laminar",
+        "LatticeModel" : "D3Q19",
+        "CollisionModel" : "Regularized"
+      }
+    ],
+
+    "Reference" :
+    {
+      "DesityRef" : "1.0",
+      "TemperatureRef" : "1.0",
+      "ViscosityRef" : "0.0"
+    },
+
+    "Initialization" :
+    {
+      "Desity" : "1.0",
+      "Velocity" : ["0.028867513", "0.0", "0.0"],
+      "Force" : ["0.0", "0.0", "0.0"]
+    },
+
+    "Output" :
+    {
+      "RunStep" : "3000",
+      "ReportStep" : "10",
+      "OutputStep" : "300",
+      "OutputStartStep" : "0",
+      "OutputDir" : "../Tests/RotatingMonopole/rotating_monopole_m005_lu_3d"
+    },
+
+    "FWH":
+    [
+      {
+        "OutputName" : "farfield1",
+        "SourceSTL" : "../Tests/RotatingMonopole/cylinder_r50.stl",
+        "ObserversCSV" : "../Tests/RotatingMonopole/rotating_monopole_obs.csv",
+        "SamplingStartStep" : "0",
+        "SamplingFrequency" : "10000",
+        "ReferenceDensity" : "1.0",
+        "RefVelocityX" : "0.028867513"
+      }
+    ]
+
+
+  },
+
+  "BoundaryCondition":
+  [
+    {
+      "Name" : "X_MIN",
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.028867513", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name" : "X_MAX",   
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.028867513", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name" : "Y_MIN",
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.028867513", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name" : "Y_MAX",
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.028867513", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name" : "Z_MIN",
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.028867513", "0.0", "0.0"]
+      } 
+    },
+    {
+      "Name" : "Z_MAX",
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.028867513", "0.0", "0.0"]
+      }
+    }
+  ]
+}

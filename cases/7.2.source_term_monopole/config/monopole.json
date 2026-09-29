@@ -1,0 +1,140 @@
+{
+  "Mesh" :
+  {
+    "MeshType" : "Generate",
+    "RealBox" : 
+    {
+      "MIN" :  ["-100.5", "-100.5", "-0.5"],
+      "MAX" :  ["100.5", "100.5", "0.5"]
+    },  
+    "nCell" : ["201", "201", "1"],
+    "BlockCell" : "201",
+    "RegridStep" : "5",
+    "RefinementLayer" : "0",
+
+    "STLModel" :
+    [
+    ],
+
+    "MeshRefinement":
+    [
+    ],
+
+    "AdaptiveMeshRefinement":
+    [
+    ]
+  },
+
+
+  "Setup":
+  {
+    "Field" :
+    [
+      {
+        "Model" : "Laminar",
+        "LatticeModel" : "D2Q9",
+        "CollisionModel" : "Regularized"
+      }
+    ],
+
+    "Reference" :
+    {
+      "DesityRef" : "1.0",
+      "TemperatureRef" : "1.0",
+      "ViscosityRef" : "0.0"
+    },
+
+    "Initialization" :
+    {
+      "Desity" : "1.0",
+      "Velocity" : ["0.0", "0.0", "0.0"],
+      "Force" : ["0.0", "0.0", "0.0"]
+    },
+
+    "Output" :
+    {
+      "RunStep" : "401",
+      "ReportStep" : "1",
+      "OutputStep" : "100",
+      "OutputDir" : "../Tests/RotatingMonopole/monopole"
+    },
+
+    "Probe":
+    [
+      {
+        "OutputName" : "probe1",
+        "ProbesCSV" : "./csv/pointSource_xProbes.csv",
+        "ProbeStartStep" : "0",
+        "ProbeEndStep" : "400000",
+        "ProbeIntervalStep" : "1",
+        "Variables" : ["density"]
+      }
+    ]
+  },
+
+  "BoundaryCondition":
+  [
+    {
+      "Name" : "X_MIN",
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name" : "X_MAX",   
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name" : "Y_MIN",
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name" : "Y_MAX",
+      "FlowCondition" :
+      {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": ["0.0", "0.0", "0.0"]
+      }
+    },
+    {
+      "Name" : "Z_MIN",
+      "FlowCondition" :
+      {
+        "Type" : "Periodic"
+      }  
+    },
+    {
+      "Name" : "Z_MAX",
+      "FlowCondition" :
+      {
+        "Type" : "Periodic"
+      }
+    }
+  ]
+}

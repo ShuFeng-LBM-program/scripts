@@ -1,0 +1,153 @@
+{
+  "Mesh": {
+    "MeshType": "Generate",
+    "RealBox": {
+      "MIN": [
+        "-9.0",
+        "-10.0",
+        "-0.02"
+      ],
+      "MAX": [
+        "14.0",
+        "10.0",
+        "0.02"
+      ]
+    },
+    "nCell": [
+      "575",
+      "500",
+      "1"
+    ],
+    "BlockCell": "575",
+    "RegridStep": "5",
+    "RefinementLayer": "0",
+    "STLModel": [
+      {
+        "FileName": "./04_Cylinder.stl"
+      }
+    ],
+    "MeshRefinement": [],
+    "AdaptiveMeshRefinement": []
+  },
+  "Setup": {
+    "Field": [
+      {
+        "Model": "Laminar",
+        "LatticeModel": "D3Q19",
+        "CollisionModel": "BGK"
+      }
+    ],
+    "Reference": {
+      "DesityRef": "1.0",
+      "TemperatureRef": "1.0",
+      "ViscosityRef": "0.0375"
+    },
+    "Initialization": {
+      "Desity": "1.0",
+      "Velocity": [
+        "0.03",
+        "0.0",
+        "0.0"
+      ],
+      "Force": [
+        "0.0",
+        "0.0",
+        "0.0"
+      ]
+    },
+    "Output": {
+      "RunStep": "100000",
+      "ReportStep": "100",
+      "OutputStep": "50000",
+      "OutputStartStep": "0",
+      "OutputDir": "./cylinder_bgk_u003_y20D/cylinder_dx25/cyl_dx25_Re20"
+    },
+    "ForceTorqueEvaluator": [
+      {
+        "OutputName": "forceCylinder",
+        "GeoID": [
+          "0"
+        ],
+        "EvaluateStartStep": "0",
+        "EvaluateIntervalStep": "8"
+      }
+    ]
+  },
+  "BoundaryCondition": [
+    {
+      "Name": "X_MIN",
+      "FlowCondition": {
+        "Type": "InFlow",
+        "Velocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "X_MAX",
+      "FlowCondition": {
+        "Type": "Sponge",
+        "OuterBCType": "OutFlow",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "Y_MIN",
+      "FlowCondition": {
+        "Type": "Sponge",
+        "OuterBCType": "Symmetric",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "Y_MAX",
+      "FlowCondition": {
+        "Type": "Sponge",
+        "OuterBCType": "Symmetric",
+        "Thickness": "20",
+        "SigmaMax": "0.1",
+        "RefDensity": "1.0",
+        "RefVelocity": [
+          "0.03",
+          "0.0",
+          "0.0"
+        ]
+      }
+    },
+    {
+      "Name": "Z_MIN",
+      "FlowCondition": {
+        "Type": "Periodic"
+      }
+    },
+    {
+      "Name": "Z_MAX",
+      "FlowCondition": {
+        "Type": "Periodic"
+      }
+    },
+    {
+      "Name": "FromSTL",
+      "STLid": "0",
+      "FlowCondition": {
+        "Type": "IBBLinear"
+      }
+    }
+  ]
+}
